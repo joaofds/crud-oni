@@ -38,7 +38,8 @@ echo $this->doctype();
     </nav>
 </div>
 <!--Container Main start-->
-<div class="height-100 bg-light">
+<div class="height-100">
+    <h1><?php echo $this->escape($this->title); ?></h1>
     <?php echo $this->layout()->content; ?>
 </div>
 <!--Container Main end-->

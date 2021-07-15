@@ -1,31 +1,64 @@
 <br /><br />
 <div id="view-content">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Data de Nascimento</th>
-                    <th scope="col">Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Fulano de Tal</td>
-                    <td>Masculino</td>
-                    <td>Data de Nascimento</td>
-                    <td>
-                        <button type="button" class="btn btn-primary"><i class='bx bxs-eyedropper'></i></button>
-                        <button type="button" class="btn btn-success"><i class='bx bx-edit'></i></button>
-                        <button type="button" class="btn btn-danger"><i class='bx bx-trash-alt'></i></i></button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="col-md-9">
+        <!-- CADASTRO DE PACIENTES INICIO -->
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h3 class="mb-0">Pacientes Cadastrados</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Sexo</th>
+                                <th scope="col">Data de Nascimento</th>
+                                <th scope="col">Convênio</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($this->pacientes as $paciente) { ?>
+                            <tr>
+                                <th scope="row"><?php echo $this->escape($paciente->id); ?></th>
+                                <td><?php echo $this->escape($paciente->nome); ?></td>
+                                <td><?php echo $this->escape($paciente->sexo) == 'm' ? 'masculino' : 'feminino'; ?></td>
+                                <td><?php echo $this->escape($paciente->data_nascimento); ?></td>
+                                <td><?php echo $this->escape($paciente->convenio); ?></td>
+                                <td>
+                                    <a href="<?php echo $this->url(
+                                        [
+                                            'controller' => 'pessoa',
+                                            'action' => 'alterar',
+                                            'id' => $paciente->id
+                                        ]); ?>">
+                                        <button type="button" class="btn btn-success">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                    </a>
+
+                                    <a href="<?php echo $this->url(
+                                        [
+                                            'controller' => 'pessoa',
+                                            'action' => 'remover',
+                                            'id' => $paciente->id
+                                        ]); ?>">
+                                        <button type="button" class="btn btn-danger">
+                                            <i class='bx bx-trash-alt'></i></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- CADASTRO DE PACIENTES FIM -->
     </div>
 </div>

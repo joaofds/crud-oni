@@ -20,7 +20,8 @@ class PessoaController extends Zend_Controller_Action
 
     public function listarAction()
     {
-        // action body
+        $pessoas = new Application_Model_DbTable_Pessoa();
+        $this->view->pacientes = $pessoas->fetchAll();
     }
 
     public function alterarAction()
