@@ -1,0 +1,48 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('.::Crud Oni Tec::.');
+echo $this->doctype();
+?>
+<html lang="pt-BR">
+<head>
+    <?php echo $this->headMeta(); ?>
+
+    <?php echo $this->headLink()
+        ->appendStylesheet('/css/bootstrap.min.css')
+        ->appendStylesheet('/css/sidebar.css'); ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <?php echo $this->headTitle(); ?>
+</head>
+<body>
+
+<body id="body-pd">
+<header class="header" id="header">
+    <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+</header>
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div><a href="/" class="nav_logo"> <i class='bx bx-home nav_logo-icon'></i>
+                <span class="nav_logo-name">Home</span>
+            </a>
+            <div class="nav_list">
+                <a href="/pessoa/" class="nav_link"> <i class='bx bx-user-plus nav_icon'></i>
+                    <span class="nav_name">Cadastro</span>
+                </a>
+                <a href="/pessoa/listar" class="nav_link"> <i class='bx bx-list-ul nav_icon'></i>
+                    <spanclass="nav_name">Listar</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--Container Main start-->
+<div class="height-100 bg-light">
+    <?php echo $this->layout()->content; ?>
+</div>
+<!--Container Main end-->
+
+<?php echo $this->headScript()->prependFile('/js/sidebar.js'); ?>
+</body>
+</html>

@@ -13,22 +13,22 @@ class PessoaController extends Zend_Controller_Action
         // action body
     }
 
-    public function adicionaPessoaAction()
+    public function adicionarAction()
     {
         // action body
     }
 
-    public function pegaPessoaAction()
+    public function listarAction()
     {
         // action body
     }
 
-    public function alteraPessoaAction()
+    public function alterarAction()
     {
         // action body
     }
 
-    public function removePessoaAction()
+    public function removerAction()
     {
         // action body
     }

@@ -1,4 +1,87 @@
 <br /><br />
 <div id="view-content">
-	<p>View script for controller <b>Pessoa</b> and script/action name <b>index</b></p>
+    <div class="col-md-6">
+        <!-- CADASTRO DE PACIENTES INICIO -->
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h3 class="mb-0">Cadastro de Pacientes</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" autocomplete="off">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Sexo:</label>
+                        <div class="col-lg-9">
+                            <select id="sexo" class="form-control" size="0">
+                                <option value="m">Masculino</option>
+                                <option value="f">Feminino</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Data de Nascimento:</label>
+                        <div class="col-lg-3">
+                            <select id="dia" class="form-control" size="0">
+                                <?php for($i=1; $i<=31;$i++) {
+                                    echo "<option value=\"'$i'\">$i</option>";
+                                }?>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <select id="mes" class="form-control" size="0">
+                                <option value="01">Janeiro</option>
+                                <option value="02">Fevereiro</option>
+                                <option value="03">Março</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Maio</option>
+                                <option value="06">Junho</option>
+                                <option value="07">Julho</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <select id="ano" class="form-control" size="0">
+                                <?php for($i=2021; $i>=1901;$i--) {
+                                    echo "<option value=\"$i\">$i</option>";
+                                }?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Convênio</label>
+                        <div class="col-lg-9">
+                            <select id="convenio" class="form-control" size="0">
+                                <option value="unimed">UNIMED</option>
+                                <option value="sus">SUS</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-9">
+                            <input type="reset" class="btn btn-secondary" value="Cancelar">
+                            <input type="button" class="btn btn-primary" value="Salvar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- CADASTRO DE PACIENTES FIM -->
+    </div>
 </div>
