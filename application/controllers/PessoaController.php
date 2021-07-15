@@ -15,7 +15,18 @@ class PessoaController extends Zend_Controller_Action
 
     public function adicionarAction()
     {
-        // action body
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $data = $request->getPost();
+            try {
+                $new = new Application_Model_DbTable_Pessoa();
+                $new->adicionaPessoa($data);
+
+                return $this->redirect('/pessoa/listar');
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
     }
 
     public function listarAction()
@@ -26,12 +37,17 @@ class PessoaController extends Zend_Controller_Action
 
     public function alterarAction()
     {
-        // action body
+        //
     }
 
     public function removerAction()
     {
-        // action body
+        $request = $this->getRequest();
+        $id = $request->getParam('id');
+        $pessoa = new Application_Model_DbTable_Pessoa();
+        $pessoa->removePessoa($id);
+
+        return $this->redirect('/pessoa/listar');
     }
 
 

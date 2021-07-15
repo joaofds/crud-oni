@@ -13,11 +13,12 @@ class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract
      */
     public function adicionaPessoa(array $data)
     {
+        $nascimento = "{$data['ano']}-{$data['mes']}-{$data['dia']}";
         $data =
             [
                 'nome'              => $data['nome'],
                 'sexo'              => $data['sexo'],
-                'data_nascimento'   => $data['nascimento'],
+                'data_nascimento'   => $nascimento,
                 'convenio'          => $data['convenio'],
             ];
         $this->insert($data);
@@ -30,7 +31,6 @@ class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract
      */
     public function pegaPessoa(int $id)
     {
-        $id = $id;
         $row = $this->fetchRow('id = ' . $id);
         if (!$row) {
             throw new \Exception('Registro não encontrados');

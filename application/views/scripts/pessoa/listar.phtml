@@ -26,7 +26,8 @@
                                 <th scope="row"><?php echo $this->escape($paciente->id); ?></th>
                                 <td><?php echo $this->escape($paciente->nome); ?></td>
                                 <td><?php echo $this->escape($paciente->sexo) == 'm' ? 'masculino' : 'feminino'; ?></td>
-                                <td><?php echo $this->escape($paciente->data_nascimento); ?></td>
+                                <?php $data = strtotime($paciente->data_nascimento)?>
+                                <td><?php echo $this->escape(date('d/m/Y', $data)); ?></td>
                                 <td><?php echo $this->escape($paciente->convenio); ?></td>
                                 <td>
                                     <a href="<?php echo $this->url(

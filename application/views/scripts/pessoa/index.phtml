@@ -7,18 +7,18 @@
                 <h3 class="mb-0">Cadastro de Pacientes</h3>
             </div>
             <div class="card-body">
-                <form class="form" role="form" autocomplete="off">
+                <form class="form" role="form" autocomplete="off" action="/pessoa/adicionar" method="post">
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text">
+                            <input name="nome" class="form-control" type="text">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Sexo:</label>
                         <div class="col-lg-9">
-                            <select id="sexo" class="form-control" size="0">
+                            <select name="sexo" id="sexo" class="form-control" size="0">
                                 <option value="m">Masculino</option>
                                 <option value="f">Feminino</option>
                             </select>
@@ -28,15 +28,16 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Data de Nascimento:</label>
                         <div class="col-lg-3">
-                            <select id="dia" class="form-control" size="0">
-                                <?php for($i=1; $i<=31;$i++) {
-                                    echo "<option value=\"'$i'\">$i</option>";
+                            <select name="dia" id="dia" class="form-control" size="0">
+                                <?php for($i=01; $i<=31;$i++) {
+                                    $n = str_pad($i , 2 , '0' , STR_PAD_LEFT);
+                                    echo "<option value=\"$n\">$n</option>";
                                 }?>
                             </select>
                         </div>
 
                         <div class="col-lg-3">
-                            <select id="mes" class="form-control" size="0">
+                            <select name="mes" id="mes" class="form-control" size="0">
                                 <option value="01">Janeiro</option>
                                 <option value="02">Fevereiro</option>
                                 <option value="03">Março</option>
@@ -53,7 +54,7 @@
                         </div>
 
                         <div class="col-lg-3">
-                            <select id="ano" class="form-control" size="0">
+                            <select name="ano" id="ano" class="form-control" size="0">
                                 <?php for($i=2021; $i>=1901;$i--) {
                                     echo "<option value=\"$i\">$i</option>";
                                 }?>
@@ -64,7 +65,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Convênio</label>
                         <div class="col-lg-9">
-                            <select id="convenio" class="form-control" size="0">
+                            <select name="convenio" id="convenio" class="form-control" size="0">
                                 <option value="unimed">UNIMED</option>
                                 <option value="sus">SUS</option>
                             </select>
@@ -75,7 +76,7 @@
                         <label class="col-lg-3 col-form-label form-control-label"></label>
                         <div class="col-lg-9">
                             <input type="reset" class="btn btn-secondary" value="Cancelar">
-                            <input type="button" class="btn btn-primary" value="Salvar">
+                            <input type="submit" class="btn btn-primary" value="Salvar">
                         </div>
                     </div>
                 </form>
