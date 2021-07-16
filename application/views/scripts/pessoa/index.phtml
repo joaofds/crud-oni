@@ -1,12 +1,31 @@
 <br /><br />
+
+<?php
+$meses =
+    [
+        '01' => 'Janeiro',
+        '02' => 'Fevereiro',
+        '03' => 'Março',
+        '04' => 'Abril',
+        '05' => 'Maio',
+        '06' => 'Junho',
+        '07' => 'Julho',
+        '08' => 'Agosto',
+        '09' => 'Setembro',
+        '10' => 'Outubro',
+        '11' => 'Novembro',
+        '12' => 'Dezembro'
+    ];
+?>
+
 <div id="view-content">
     <div class="col-md-6">
-        <!-- CADASTRO DE PACIENTES INICIO -->
         <div class="card card-outline-secondary">
             <div class="card-header">
                 <h3 class="mb-0">Cadastro de Pacientes</h3>
             </div>
             <div class="card-body">
+                <!-- CADASTRO DE PACIENTES INICIO -->
                 <form class="form" role="form" autocomplete="off" action="/pessoa/adicionar" method="post">
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
@@ -38,18 +57,11 @@
 
                         <div class="col-lg-3">
                             <select name="mes" id="mes" class="form-control" size="0">
-                                <option value="01">Janeiro</option>
-                                <option value="02">Fevereiro</option>
-                                <option value="03">Março</option>
-                                <option value="04">Abril</option>
-                                <option value="05">Maio</option>
-                                <option value="06">Junho</option>
-                                <option value="07">Julho</option>
-                                <option value="08">Agosto</option>
-                                <option value="09">Setembro</option>
-                                <option value="10">Outubro</option>
-                                <option value="11">Novembro</option>
-                                <option value="12">Dezembro</option>
+                                <?php
+                                foreach ($meses as $key => $mes) {
+                                    echo "<option value=\"$key\">$mes</option>";
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -80,8 +92,8 @@
                         </div>
                     </div>
                 </form>
+                <!-- CADASTRO DE PACIENTES FIM -->
             </div>
         </div>
-        <!-- CADASTRO DE PACIENTES FIM -->
     </div>
 </div>

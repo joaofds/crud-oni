@@ -42,20 +42,23 @@ class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract
      * @param int $id
      * @param array $data
      */
-    public function alteraPessoa(int $id, array $data)
+    public function alterarPessoa(array $data)
     {
-        if (!$id) {
+        if (!isset($data['id'])) {
             throw new \Exception('Registro não encontrados');
         }
 
+        $id = (int)$data['id'];
+        $nascimento = "{$data['ano']}-{$data['mes']}-{$data['dia']}";
         $data =
             [
                 'nome'              => $data['nome'],
                 'sexo'              => $data['sexo'],
-                'data_nascimento'   => $data['nascimento'],
+                'data_nascimento'   => $nascimento,
                 'convenio'          => $data['convenio'],
             ];
-        $this->update($data, 'id = '. $id);
+        $where = $this->getAdapter()->quoteInto('id = ?', $id);
+        $this->update($data, $where);
     }
 
     /**

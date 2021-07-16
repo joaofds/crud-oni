@@ -1,0 +1,8 @@
+/*
+    Joao Ferreira <jo4o.fds@gmail.com>
+    Custom Styles Here
+*/
+
+table tr td, input, select, option {
+    text-transform: uppercase !important;
+}

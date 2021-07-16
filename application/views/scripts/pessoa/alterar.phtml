@@ -1,4 +1,123 @@
-<br /><br />
+<?php
+    $meses =
+        [
+            '01' => 'Janeiro',
+            '02' => 'Fevereiro',
+            '03' => 'Março',
+            '04' => 'Abril',
+            '05' => 'Maio',
+            '06' => 'Junho',
+            '07' => 'Julho',
+            '08' => 'Agosto',
+            '09' => 'Setembro',
+            '10' => 'Outubro',
+            '11' => 'Novembro',
+            '12' => 'Dezembro'
+        ];
+
+    $nascimento = explode('-', $this->pessoa['data_nascimento']);
+?>
+
 <div id="view-content">
-	<?php print_r($this->pessoa); ?>
+    <br /><br />
+    <div id="view-content">
+        <div class="col-md-6">
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Alterar Cadastro</h3>
+                </div>
+                <div class="card-body">
+                    <!-- ALTERAR CADASTRO INICIO -->
+                    <form class="form" role="form" autocomplete="off" action="/pessoa/alterar" method="post">
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
+                            <div class="col-lg-9">
+                                <input name="nome" class="form-control" type="text" value="<?= $this->pessoa['nome'] ?>">
+                                <input name="id" type="hidden" value="<?= $this->pessoa['id'] ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Sexo:</label>
+                            <div class="col-lg-9">
+                                <select name="sexo" id="sexo" class="form-control" size="0">
+                                    <option value="m" <?= $this->pessoa['sexo'] == 'm' ? 'selected' : '' ?>>Masculino</option>
+                                    <option value="f" <?= $this->pessoa['sexo'] == 'f' ? 'selected' : '' ?>>Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <?php
+                            $nascimento = explode('-', $this->pessoa['data_nascimento']);
+                        ?>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Data de Nascimento:</label>
+                            <div class="col-lg-3">
+                                <select name="dia" id="dia" class="form-control" size="0">
+                                    <?php for($i=01; $i<=31;$i++) {
+                                        $n = str_pad($i , 2 , '0' , STR_PAD_LEFT);
+                                        if ($n == $nascimento[2]) {
+                                            $selected = 'selected';
+                                        }
+                                        echo "<option value=\"$n\" $selected>$n</option>";
+                                        unset($selected);
+                                    }?>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <select name="mes" id="mes" class="form-control" size="0">
+                                    <?php
+                                        foreach ($meses as $key => $mes) {
+                                            if ($key == $nascimento[1]) {
+                                                $selected = 'selected';
+                                            }
+                                            echo "<option value=\"$key\" $selected>$mes</option>";
+                                            unset($selected);
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <select name="ano" id="ano" class="form-control" size="0">
+                                    <?php for($i=2021; $i>=1901;$i--) {
+                                        if ($i == $nascimento[0]) {
+                                            $selected = 'selected';
+                                        }
+                                        echo "<option value=\"$i\" $selected>$i</option>";
+                                        unset($selected);
+                                    }?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Convênio</label>
+                            <div class="col-lg-9">
+                                <select name="convenio" id="convenio" class="form-control" size="0">
+                                    <option value="unimed" <?= $this->pessoa['convenio'] == 'unimed' ? 'selected' : '' ?>>UNIMED</option>
+                                    <option value="sus" <?= $this->pessoa['convenio'] == 'sus' ? 'selected' : ''  ?>>SUS</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <a href="/pessoa/listar">
+                                    <input type="button" class="btn btn-secondary" value="Cancelar">
+                                </a>
+                                <input type="submit" class="btn btn-primary" value="Salvar">
+                            </div>
+                        </div>
+                    </form>
+                    <!-- ALTERAR CADASTRO FIM -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
